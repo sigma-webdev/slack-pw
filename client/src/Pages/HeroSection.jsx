@@ -20,7 +20,7 @@ const HeroSection = () => {
 
   return (
     <div className="w-3/4 py-8 mx-auto text-center">
-      <h1 className="py-4 text-5xl font-bold">
+      <h1 className="py-4 text-2xl font-bold md:text-5xl">
         {" "}
         Made for People.{" "}
         <span className="text-[#451C4A]  ">Built for productivity</span>
@@ -34,7 +34,7 @@ const HeroSection = () => {
         <span className="font-bold "> Slack if free to try</span> Slack if free
         to try for as long as you like{" "}
       </p>
-      <div className="flex items-center py-5 mb-4 justify-evenly">
+      <div className="flex flex-wrap items-center py-5 mb-4 justify-evenly">
         <img className="w-20 " src={airbnd} alt="air bnb" />
         <img className="w-16" src={nasa} alt=" nasa" />
         <img className="w-16" src={uber} alt="uber" />
@@ -44,6 +44,7 @@ const HeroSection = () => {
       </div>
       <video
         autoPlay
+        loop
         ref={videoRef}
         className="rounded-xl"
         src="https://a.slack-edge.com/0cedc3b/marketing/img/homepage/true-prospects/hero-revamp/animation/hero@2x.IN.webm"

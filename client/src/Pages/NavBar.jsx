@@ -122,13 +122,13 @@ const NavBar = () => {
             className="bg-white shadow top-12 w-72 menu menu-sm dropdown-content z-2 rounded-box -right-6"
           >
             <li>
-              <a>Item 1</a>
+              <a>Features</a>
             </li>
             <li>
-              <a> item 2</a>
+              <a> Enterprise </a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a> Sign in </a>
             </li>
             <li>
               <a className=" text-[#4A154B] border-2 border-gray-400 outline-[#4A154b]  btn btn-outline   font-extrabold hover:bg-[#ffffff] hover:text-[#4A154B] hover:border-[#4A154B]">
