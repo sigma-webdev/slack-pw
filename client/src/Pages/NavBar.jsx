@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import slackLogo from "../assets/slackLogo.png";
 const NavBar = () => {
   return (
@@ -88,16 +89,22 @@ const NavBar = () => {
             />
           </svg>
         </button>
-        <a className="hidden w-12 text-sm lg:block "> Sign in</a>
+        <Link to={"/signin"} className="hidden w-12 text-sm lg:block ">
+          {" "}
+          Sign in
+        </Link>
         <div className="justify-between hidden gap-2 lg:flex">
           <a className=" text-[#4A154B]  border-2 border-gray-400 outline-[#4A154b]  btn btn-outline   font-extrabold hover:bg-[#ffffff] hover:text-[#4A154B] hover:border-[#4A154B]">
             {" "}
             TALK TO SALES{" "}
           </a>
-          <a className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]">
+          <Link
+            to={"/signup"}
+            className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]"
+          >
             {" "}
             GET STARTED{" "}
-          </a>
+          </Link>
         </div>
 
         <div className="dropdown">
@@ -128,7 +135,7 @@ const NavBar = () => {
               <a> Enterprise </a>
             </li>
             <li>
-              <a> Sign in </a>
+              <Link to={"/signin"}> Sign in </Link>
             </li>
             <li>
               <a className=" text-[#4A154B] border-2 border-gray-400 outline-[#4A154b]  btn btn-outline   font-extrabold hover:bg-[#ffffff] hover:text-[#4A154B] hover:border-[#4A154B]">
@@ -137,10 +144,13 @@ const NavBar = () => {
               </a>
             </li>
             <li>
-              <a className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]">
+              <Link
+                to={"/signup"}
+                className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]"
+              >
                 {" "}
                 GET STARTED{" "}
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,6 +1,6 @@
 // eslint-disable-next-line react/prop-types
 const Layout = ({ children }) => {
-  return <>{children}</>;
+  return <div>{children}</div>;
 };
 
 export default Layout;
