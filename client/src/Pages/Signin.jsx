@@ -7,10 +7,10 @@ const Signin = () => {
     <>
       <section className="w-3/4 mx-auto text-center py-14">
         <div className="">
-          <Link to={"/"}>
+          <Link to={"/"} className="">
             <img className="mx-auto " src={slackLogo} alt="home" width={100} />{" "}
           </Link>
-          <h3 className="pb-2 text-3xl font-semibold md:text-5xl">
+          <h3 className="pb-2 mt-2 text-3xl font-semibold md:text-5xl">
             {" "}
             Sign in to Slack
           </h3>
@@ -77,7 +77,8 @@ const Signin = () => {
             {" "}
             Continue{" "}
           </button>
-          <div>
+          {/* notes below Signin button */}
+          <div className="flex justify-between gap-3 p-1 bg-gray-200 rounded-md">
             <svg
               width="25"
               height="24"
@@ -106,16 +107,15 @@ const Signin = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <p className="text-black">
-                {" "}
-                We will email you a magic code for a password-free sign in. Or
-                you can <span> sign in manually instead </span>
-              </p>
             </svg>
+            <p className="text-left ">
+              {" "}
+              We will email you a magic code for a password-free sign in.
+            </p>
           </div>
         </div>
       </section>
-      <div className="absolute text-sm right-10 top-10">
+      <div className="absolute hidden text-sm right-10 top-10 md:block">
         <p> New to Slack ?</p>
         <Link to={"/signup"} className="text-[#0B4C8C]">
           {" "}

@@ -18,7 +18,7 @@ const Signup = () => {
           <Link to={"/"}>
             <img className="mx-auto " src={slackLogo} alt="home" width={100} />{" "}
           </Link>
-          <h3 className="pb-2 text-3xl font-semibold md:text-5xl">
+          <h3 className="pb-2 mt-3 text-3xl font-semibold md:text-5xl">
             {" "}
             First, enter your email
           </h3>
