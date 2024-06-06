@@ -5,6 +5,7 @@ import uber from "../assets/uber.png";
 import target from "../assets/target.png";
 import nyt from "../assets/nyt.png";
 import etsy from "../assets/etsy.png";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const videoRef = useRef(null);
@@ -25,10 +26,13 @@ const HeroSection = () => {
         Made for People.{" "}
         <span className="text-[#451C4A]  ">Built for productivity</span>
       </h1>
-      <button className="font-semibold  btn px-10 h-14  text-white bg-[#562F5C] my-3 hover:bg-[#451c4a]">
+      <Link
+        to={"/signup"}
+        className="font-semibold  btn px-10 h-14  text-white bg-[#562F5C] my-3 hover:bg-[#451c4a]"
+      >
         {" "}
         GET STARTED
-      </button>
+      </Link>
       <p className="py-2 mb-2">
         {" "}
         <span className="font-bold "> Slack if free to try</span> Slack if free

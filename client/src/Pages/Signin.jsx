@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import slackLogo from "../assets/slackLogo2.svg";
 import Footer from "../Component/Footer";
 
 const Signin = () => {
+  const navigate = useNavigate();
+
+  const handleSignin = () => {
+    navigate("/confirmemail");
+  };
   return (
     <>
       <section className="w-3/4 mx-auto text-center py-14">
@@ -73,7 +78,10 @@ const Signin = () => {
             type="email"
             placeholder="name@work-email.com"
           />
-          <button className="text-lg w-full py-1 mt-4 mb-4 text-white btn bg-[#621f69ec] hover:bg-[#621f69] rounded-md ">
+          <button
+            onClick={handleSignin}
+            className="text-lg w-full py-1 mt-4 mb-4 text-white btn bg-[#621f69ec] hover:bg-[#621f69] rounded-md "
+          >
             {" "}
             Continue{" "}
           </button>
