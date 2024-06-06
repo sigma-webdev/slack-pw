@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
 import ConfirmEmail from "./Pages/ConfirmEmail";
+import Home from "./Pages/Home";
 
 function App() {
   return (

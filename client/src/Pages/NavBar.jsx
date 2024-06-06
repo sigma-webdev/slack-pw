@@ -1,13 +1,24 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import slackLogo from "../assets/slackLogo.png";
-const NavBar = () => {
+import slackLogoWhite from "../assets/slackLogoWhite.png";
+
+const NavBar = ({ isAuth }) => {
   return (
-    <div className="navbar base-100 2xl:w-[1400px] mx-auto  2xl:rounded-full pl-10 pr-10 mt-4 font-bold">
+    <div
+      className={`navbar base-100 2xl:w-[1400px] mx-auto  2xl:rounded-full pl-10 pr-10 pt-4 font-bold ${
+        isAuth ? "bg-[#4A154B] text-white" : ""
+      }`}
+    >
       {/* left nav logo and items */}
-      <div className="w-4/5 navbar-start">
-        <a className="pl-0 pr-5 btn btn-ghost">
-          <img src={slackLogo} alt="slack logo" />
-        </a>
+      <div className={`w-4/5 navbar-start  `}>
+        <Link to={"/"} className="pl-0 pr-5 btn btn-ghost">
+          {isAuth ? (
+            <img className="" src={slackLogoWhite} alt="slack logo" />
+          ) : (
+            <img className="" src={slackLogo} alt="slack logo" />
+          )}
+        </Link>
         <div className="hidden lg:flex flex-nowrap">
           <ul className="px-1 menu menu-horizontal">
             <li>
@@ -89,22 +100,40 @@ const NavBar = () => {
             />
           </svg>
         </button>
-        <Link to={"/signin"} className="hidden w-12 text-sm lg:block ">
-          {" "}
-          Sign in
-        </Link>
+        {!isAuth && (
+          <Link to={"/signin"} className="hidden w-12 text-sm lg:block ">
+            {" "}
+            Sign in
+          </Link>
+        )}
+
         <div className="justify-between hidden gap-2 lg:flex">
-          <a className=" text-[#4A154B]  border-2 border-gray-400 outline-[#4A154b]  btn btn-outline   font-extrabold hover:bg-[#ffffff] hover:text-[#4A154B] hover:border-[#4A154B]">
+          <a
+            className={` ${
+              isAuth
+                ? "text-white border-gray-300 hover:bg-[#4A154b] hover:text-white hover:border-white"
+                : "text-[#4A154B] hover:bg-[#ffffff]"
+            } border-2 border-gray-300 outline-[#4A154b]  btn btn-outline   font-bold  hover:text-[#4A154B] hover:border-[#4A154B]`}
+          >
             {" "}
             TALK TO SALES{" "}
           </a>
-          <Link
-            to={"/signup"}
-            className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]"
-          >
-            {" "}
-            GET STARTED{" "}
-          </Link>
+          {isAuth ? (
+            <Link
+              to={"/chats"}
+              className=" align-center   btn bg-white font-semibold text-[#4A154B]  shadow-inner hover:bg-white hover:shadow-[#4a154b49] "
+            >
+              START CHATTING
+            </Link>
+          ) : (
+            <Link
+              to={"/signup"}
+              className=" align-center   btn bg-[#4a154bea] font-bold text-white hover:bg-[#4A154B]"
+            >
+              {" "}
+              GET STARTED{" "}
+            </Link>
+          )}
         </div>
 
         <div className="dropdown">
