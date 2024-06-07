@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import slackLogo from "../assets/slackLogo2.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 import mail from "../assets/mail.png";
 import outlook from "../assets/outlook.png";
@@ -27,11 +27,7 @@ const ConfirmEmail = () => {
     });
   };
 
-  useEffect(() => {
-    validateOtp();
-  }, [otp]);
-
-  const validateOtp = () => {
+  const validateOtp = useCallback(() => {
     if (
       otp.firstChar.length > 0 &&
       otp.secondChar.length > 0 &&
@@ -47,7 +43,11 @@ const ConfirmEmail = () => {
       setLoading(false);
     }
     console.log("validFunction being called");
-  };
+  }, [otp]);
+
+  useEffect(() => {
+    validateOtp();
+  }, [otp, validateOtp]);
 
   return (
     <>
