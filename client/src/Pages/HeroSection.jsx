@@ -33,7 +33,6 @@ const HeroSection = ({ isAuth }) => {
             <img src={waveImage} alt="wave hand" />
             <h1 className="py-2 text-2xl font-bold text-white md:text-5xl">
               Welcome
-              <span className="text-[#451C4A]  ">Built for productivity</span>
             </h1>
           </div>
         ) : (
