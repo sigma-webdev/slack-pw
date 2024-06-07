@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Footer from "../Component/Footer";
 import slackLogo from "../assets/slackLogo2.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import mail from "../assets/mail.png";
 import outlook from "../assets/outlook.png";
@@ -16,14 +16,37 @@ const ConfirmEmail = () => {
     sixChar: "",
   });
 
-  console.log(otp);
+  const [loading, setLoading] = useState(false);
 
+  // handle input change
   const handleOtpChange = (event) => {
     const { name, value } = event.target;
     setOtp({
       ...otp,
       [name]: value,
     });
+  };
+
+  useEffect(() => {
+    validateOtp();
+  }, [otp]);
+
+  const validateOtp = () => {
+    if (
+      otp.firstChar.length > 0 &&
+      otp.secondChar.length > 0 &&
+      otp.thirdChar.length > 0 &&
+      otp.fourthChar.length > 0 &&
+      otp.fifthChar.length > 0 &&
+      otp.sixChar.length > 0
+    ) {
+      setLoading(true);
+      const tempOtp = Object.values(otp).join("");
+      console.log(tempOtp);
+    } else {
+      setLoading(false);
+    }
+    console.log("validFunction being called");
   };
 
   return (
@@ -95,6 +118,7 @@ const ConfirmEmail = () => {
             className="w-10 h-10 text-center border border-black rounded md:h-16 md:w-14"
           />
         </div>
+        {loading && <p className="loading loading-spinner loading-md"></p>}
 
         {/* email container  */}
         <div className="flex justify-center gap-10 py-5 pt-16">

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Layout from "../Layout/Layout";
 import HeroSection from "./HeroSection";
 import NavBar from "./NavBar";
@@ -8,8 +8,6 @@ const Home = () => {
   // eslint-disable-next-line no-unused-vars
   const [isAuth, setIsAuth] = useState(true);
   console.log(isAuth);
-
-  // useEffect(() => {}, []);
 
   const toggle = () => {
     setIsAuth((prevState) => !prevState);
