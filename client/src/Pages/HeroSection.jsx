@@ -79,10 +79,13 @@ const HeroSection = ({ isAuth }) => {
                     <p className="pl-5"> 3 chats </p>
                   </div>
                 </div>
-                <button className="text-xl btn bg-[#621f69e8] text-white px-6 hover:bg-[#611F69] ">
+                <Link
+                  to={"/chat"}
+                  className="text-xl btn bg-[#621f69e8] text-white px-6 hover:bg-[#611F69] "
+                >
                   {" "}
                   LAUNCH CHATS{" "}
-                </button>
+                </Link>
               </div>
             </section>
             <div className="py-8 text-white 2xl:py-14">
