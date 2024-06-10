@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide scrollbar for Firefox */
+.scrollable-container {
+    scrollbar-width: thin;  /* For Firefox */
+    -ms-overflow-style: none;  /* For IE and Edge */
+  }
+  
