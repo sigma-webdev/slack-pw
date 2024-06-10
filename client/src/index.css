@@ -9,6 +9,6 @@
   }
 
 body {
-    width: 1444px;
+    max-width: 1444px;
     margin: auto;
 }
