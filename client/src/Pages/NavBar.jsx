@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import slackLogo from "../assets/slackLogo.png";
 import slackLogoWhite from "../assets/slackLogoWhite.png";
+import downArrow from "../assets/chevron-down.svg";
 
 const NavBar = ({ isAuth }) => {
   return (
@@ -21,63 +22,112 @@ const NavBar = ({ isAuth }) => {
         </Link>
         <div className="hidden lg:flex flex-nowrap">
           <ul className="px-1 menu menu-horizontal">
-            <li>
-              <details>
-                <summary>Features</summary>
-                <ul className="p-2">
-                  <li>
-                    <a> Collaboration </a>
-                  </li>
-                  <li>
-                    <a> Automation </a>
-                  </li>
-                  <li>
-                    <a> Intelligence </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <details>
-                <summary>Solutions </summary>
-                <ul className="p-1">
-                  <li>
-                    <a> Department </a>
-                  </li>
-                  <li>
-                    <a> Industry </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <details>
-                <summary>Solutions </summary>
-                <ul className="p-1">
-                  <li>
-                    <a> Department </a>
-                  </li>
-                  <li>
-                    <a> Industry </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li className="p-2">Enterprise</li>
+            <div className="dropdown dropdown-centre">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost rounded-btn"
+              >
+                Features{" "}
+                <span>
+                  <img src={downArrow} alt="arrow down" />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+              >
+                <li>
+                  <a> Collaboration </a>
+                </li>
+                <li>
+                  <a> Automation </a>
+                </li>
+                <li>
+                  <a> Intelligence </a>
+                </li>
+              </ul>
+            </div>
 
-            <li>
-              <details>
-                <summary> Pricing </summary>
-                <ul className="p-1">
-                  <li>
-                    <a> Department </a>
-                  </li>
-                  <li>
-                    <a> Industry </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
+            <div className="dropdown dropdown-centre">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost rounded-btn"
+              >
+                Solution{" "}
+                <span>
+                  <img src={downArrow} alt="arrow down" />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+              >
+                <li>
+                  <a> Collaboration </a>
+                </li>
+                <li>
+                  <a> Automation </a>
+                </li>
+                <li>
+                  <a> Intelligence </a>
+                </li>
+              </ul>
+            </div>
+            <div className="dropdown dropdown-centre">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost rounded-btn"
+              >
+                Resources{" "}
+                <span>
+                  <img src={downArrow} alt="arrow down" />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+              >
+                <li>
+                  <a> Collaboration </a>
+                </li>
+                <li>
+                  <a> Automation </a>
+                </li>
+                <li>
+                  <a> Intelligence </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="dropdown dropdown-centre">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost rounded-btn"
+              >
+                Pricing{" "}
+                <span>
+                  <img src={downArrow} alt="arrow down" />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+              >
+                <li>
+                  <a> Collaboration </a>
+                </li>
+                <li>
+                  <a> Automation </a>
+                </li>
+                <li>
+                  <a> Intelligence </a>
+                </li>
+              </ul>
+            </div>
           </ul>
         </div>
       </div>
