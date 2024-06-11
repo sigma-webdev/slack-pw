@@ -3,6 +3,7 @@ import threadchat from "../assets/thread-message.svg";
 import searchImage from "../assets/magnifying-glass.svg";
 import userProfile from "../assets/slackbot.png";
 import arrowDown from "../assets/chevron-down.svg";
+import profileAvatar from "../assets/myProfile.png";
 
 const Chat = () => {
   const [width, setWidth] = useState(300); // Initial width of the sidebar
@@ -111,38 +112,65 @@ const Chat = () => {
 
         {/* chat profile name section and chat section */}
         <div className="absolute bottom-0 w-full py-4">
-          <div className=" text-[#D1D2D3] pl-2">
-            <div className="flex items-center gap-4 font-bold">
-              <img src={userProfile} alt="profile avatar" width={100} />
-              <h3 className="text-2xl"> Mangesh Thakre </h3>
+          {/* message container */}
+          <div className="">
+            <div className=" text-[#D1D2D3] pl-2">
+              <div className="flex items-center gap-4 font-bold">
+                <img src={userProfile} alt="profile avatar" width={100} />
+                <h3 className="text-2xl"> Mangesh Thakre </h3>
+              </div>
+              <p className="mt-2 text-lg">
+                {" "}
+                This conversation is just between{" "}
+                <span className="text-[#2BA3C4]">@Mangesh</span> Thakre and you.
+                Check out their profile to learn more about them.
+              </p>
+
+              {/* You can open the modal using document.getElementById('ID').showModal() method */}
+              <button
+                className="btn mt-3  btn-outline text-[#D1D2D3] hover:bg-[#d1d2d376]"
+                onClick={() =>
+                  document.getElementById("my_modal_3").showModal()
+                }
+              >
+                View Profile
+              </button>
             </div>
-            <p className="mt-2 text-lg">
+
+            <div className="divider divider-neutral text-[#D1D2D3]">
               {" "}
-              This conversation is just between{" "}
-              <span className="text-[#2BA3C4]">@Mangesh</span> Thakre and you.
-              Check out their profile to learn more about them.
-            </p>
+              Message{" "}
+            </div>
 
-            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-            <button
-              className="btn mt-3  btn-outline text-[#D1D2D3] hover:bg-[#d1d2d376]"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
-            >
-              View Profile
-            </button>
-          </div>
+            {/* all the message will be displayed here */}
+            <div className="pl-2 text-[#D1D2D3] ">
+              {/* message displayed body  */}
+              <div className="flex items-start gap-3">
+                <img src={userProfile} alt="User profile" width={45} />
+                <div>
+                  <p className="font-bold">
+                    {" "}
+                    Ngamlenmang Touthang{" "}
+                    <span className="text-xs font-normal"> 10:00pm</span>
+                  </p>
+                  <p className="text-sm"> Hi mangesh, How are you</p>
+                </div>
+              </div>
 
-          <div className="divider divider-neutral text-[#D1D2D3]">
-            {" "}
-            Message{" "}
-          </div>
-
-          {/* all the message will be displayed here */}
-          <div className="pl-2 text-[#D1D2D3] flex items-center gap-2">
-            <img src={userProfile} alt="User profile" width={40} />
-            <div>
-              <p className="font-semibold"> Ngamlenmang Touthang</p>
-              <p className="text-sm"> Hi mangesh, How are you</p>
+              <div className="flex items-start gap-3 py-4">
+                <img src={profileAvatar} alt="User profile" width={45} />
+                <div>
+                  <p className="font-bold text-gray-100 ">
+                    {" "}
+                    Mangesh Thakre{" "}
+                    <span className="text-xs font-normal"> 10:05pm</span>
+                  </p>
+                  <p className="text-sm font-normal">
+                    {" "}
+                    Hello mang, im fine. How are you too{" "}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -152,6 +180,7 @@ const Chat = () => {
               <textarea
                 type="text"
                 id="message"
+                placeholder="Type your message here"
                 className="w-full bg-[#222529] focus:outline-none text-[#D1D2D3] py-4 "
               />
               <div className="p-2  rounded-md cursor-pointer bg-[#007A5A] hover:bg-[#007a59da]">
