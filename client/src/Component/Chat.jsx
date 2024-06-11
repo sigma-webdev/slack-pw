@@ -132,7 +132,19 @@ const Chat = () => {
             </button>
           </div>
 
-          <div>text message</div>
+          <div className="divider divider-neutral text-[#D1D2D3]">
+            {" "}
+            Message{" "}
+          </div>
+
+          {/* all the message will be displayed here */}
+          <div className="pl-2 text-[#D1D2D3] flex items-center gap-2">
+            <img src={userProfile} alt="User profile" width={40} />
+            <div>
+              <p className="font-semibold"> Ngamlenmang Touthang</p>
+              <p className="text-sm"> Hi mangesh, How are you</p>
+            </div>
+          </div>
 
           {/* chat section */}
           <div className="bottom-0 w-full pl-2 pr-2 mt-5 ">
