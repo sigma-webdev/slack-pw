@@ -81,8 +81,8 @@ const Chat = () => {
         onMouseDown={startDrag}
       ></div>
 
-      {/* chat message part */}
-      <div className="w-full mt-5 text-black bg-[#222529] rounded-r-md overflow-y-scroll scrollable-container">
+      {/* 3 chat message part */}
+      <div className="w-full mt-5 text-black bg-[#1A1D21] rounded-r-md overflow-y-scroll scrollable-container relative">
         {/* chat name section   */}
 
         {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -95,41 +95,69 @@ const Chat = () => {
             <h3 className="text-sm"> Mangesh Thakre </h3>
             <img src={arrowDown} alt="arrow down" />
           </button>
+          <dialog id="my_modal_3" className="modal">
+            <div className="modal-box">
+              <form method="dialog">
+                {/* if there is a button in form, it will close the modal */}
+                <button className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2">
+                  ✕
+                </button>
+              </form>
+              <h3 className="text-lg font-bold"> Mangesh Thakre</h3>
+              <p className="py-4">Here we will display user information</p>
+            </div>
+          </dialog>
         </div>
 
-        <dialog id="my_modal_3" className="modal">
-          <div className="modal-box">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="absolute btn btn-sm btn-circle btn-ghost right-2 top-2">
-                ✕
-              </button>
-            </form>
-            <h3 className="text-lg font-bold">Hello!</h3>
-            <p className="py-4">Press ESC key or click on ✕ button to close</p>
-          </div>
-        </dialog>
+        {/* chat profile name section and chat section */}
+        <div className="absolute bottom-0 w-full py-4">
+          <div className=" text-[#D1D2D3] pl-2">
+            <div className="flex items-center gap-4 font-bold">
+              <img src={userProfile} alt="profile avatar" width={100} />
+              <h3 className="text-2xl"> Mangesh Thakre </h3>
+            </div>
+            <p className="mt-2 text-lg">
+              {" "}
+              This conversation is just between{" "}
+              <span className="text-[#2BA3C4]">@Mangesh</span> Thakre and you.
+              Check out their profile to learn more about them.
+            </p>
 
-        {/* chat profile name section */}
-        <div className="pt-40  text-[#D1D2D3]">
-          <div className="flex items-center gap-4 font-bold">
-            <img src={userProfile} alt="profile avatar" width={100} />
-            <h3 className="text-2xl"> Mangesh Thakre </h3>
+            {/* You can open the modal using document.getElementById('ID').showModal() method */}
+            <button
+              className="btn mt-3  btn-outline text-[#D1D2D3] hover:bg-[#d1d2d376]"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
+            >
+              View Profile
+            </button>
           </div>
-          <p className="mt-2 text-lg">
-            {" "}
-            This conversation is just between{" "}
-            <span className="text-[#2BA3C4]">@Mangesh</span> Thakre and you.
-            Check out their profile to learn more about them.
-          </p>
-          <button className="mt-3 btn btn-outline text-[#D1D2D3] hover:bg-[#d1d2d376]">
-            view Profile
-          </button>
-        </div>
 
-        {/* chat section */}
-        <div>
-          <p> chat section </p>
+          <div>text message</div>
+
+          {/* chat section */}
+          <div className="bottom-0 w-full pl-2 pr-2 mt-5 ">
+            <div className="flex items-end w-full px-3 py-1 gap-1 rounded-md bg-[#222529] border border-gray-500 ">
+              <textarea
+                type="text"
+                id="message"
+                className="w-full bg-[#222529] focus:outline-none text-[#D1D2D3] py-4 "
+              />
+              <div className="p-2  rounded-md cursor-pointer bg-[#007A5A] hover:bg-[#007a59da]">
+                <svg
+                  width="20"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3.47804 2.4043C3.2133 2.3274 2.92771 2.40193 2.73432 2.5984C2.54093 2.79487 2.47091 3.0816 2.55198 3.3451L4.98426 11.25H13.5C13.9142 11.25 14.25 11.5858 14.25 12C14.25 12.4142 13.9142 12.75 13.5 12.75H4.98427L2.55207 20.6546C2.471 20.9181 2.54102 21.2049 2.73441 21.4013C2.92781 21.5978 3.2134 21.6723 3.47814 21.5954C10.1767 19.6494 16.3974 16.5814 21.9233 12.6087C22.1193 12.4678 22.2355 12.2412 22.2355 11.9998C22.2355 11.7583 22.1193 11.5317 21.9233 11.3908C16.3974 7.41817 10.1767 4.35021 3.47804 2.4043Z"
+                    fill="#ffffff"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
