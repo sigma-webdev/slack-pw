@@ -10,7 +10,7 @@ const Signin = () => {
   };
   return (
     <>
-      <section className="w-3/4 mx-auto text-center py-14">
+      <section className="relative w-3/4 mx-auto text-center py-14">
         <div className="">
           <Link to={"/"} className="">
             <img className="mx-auto " src={slackLogo} alt="home" width={100} />{" "}
@@ -122,14 +122,15 @@ const Signin = () => {
             </p>
           </div>
         </div>
+        <div className="absolute right-0 hidden text-sm top-10 md:block">
+          <p> New to Slack ?</p>
+          <Link to={"/signup"} className="text-[#0B4C8C]">
+            {" "}
+            Create an Account{" "}
+          </Link>
+        </div>
       </section>
-      <div className="absolute hidden text-sm right-10 top-10 md:block">
-        <p> New to Slack ?</p>
-        <Link to={"/signup"} className="text-[#0B4C8C]">
-          {" "}
-          Create an Account{" "}
-        </Link>
-      </div>
+
       <Footer />
     </>
   );
