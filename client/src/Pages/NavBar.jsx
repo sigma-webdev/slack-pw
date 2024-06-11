@@ -35,7 +35,7 @@ const NavBar = ({ isAuth }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4 text-black"
               >
                 <li>
                   <a> Collaboration </a>
@@ -62,7 +62,7 @@ const NavBar = ({ isAuth }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4 text-black"
               >
                 <li>
                   <a> Collaboration </a>
@@ -88,7 +88,7 @@ const NavBar = ({ isAuth }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4 text-black"
               >
                 <li>
                   <a> Collaboration </a>
@@ -115,7 +115,7 @@ const NavBar = ({ isAuth }) => {
               </div>
               <ul
                 tabIndex={0}
-                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
+                className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4 text-black"
               >
                 <li>
                   <a> Collaboration </a>
