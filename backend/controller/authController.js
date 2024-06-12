@@ -1,78 +1,91 @@
 const userModel = require("../model/userModel.js");
 const CustomError = require("../utils/customError.js");
 const cookieOptions = require("../utils/cookieOptions.js");
+const emailValidator = require("email-validator");
+const sendEmail = require("../utils/sendEmail.js");
+const bcrypt = require("bcrypt");
+const otpGenerator = require("otp-generator");
 
 /******************************************************
  * @SIGNUP
- * @route /api/auth/signUp
- * @description   singin function for creating new user
- * @body userName,  email, password ,confirmPassword
- * @returns User Object
+ * @route
+ * @description
+ * @body
+ * @returns
  ******************************************************/
 
 const signUp = async (req, res, next) => {
-  const data = req.body;
-  try {
-    const userInfo = new userModel(data);
-    const result = await userInfo.save();
-    return res.status(200).json({ success: true, data: result });
-  } catch (error) {
-    return next(error);
-  }
-};
-
-/******************************************************
- * @SIGIN
- * @route /api/auth/signIN
- * @description  returns user object of the cradentials is correct with token
- * @body  email, password
- * @returns User Object
- ******************************************************/
-
-const signIn = async (req, res, next) => {
-  const { password, email } = req.body;
-  if (!email || !password) {
-    return next(new CustomError("Please fill all fields", 400));
-  }
+  const { email } = req.body;
+  if (!email) return new CustomError("Please Enter Email", 404);
+  const isEmailValid = emailValidator.validate(email);
+  if (!isEmailValid) return new CustomError("Please Enter valid Email", 404);
 
   try {
-    const user = await userModel.findOne({ email }).select("+password");
-    if (!user) {
-      return next(new CustomError("you are not registered", 400));
-    }
+    const otp = otpGenerator.generate(6, {
+      upperCaseAlphabets: false,
+      specialChars: false
+    });
+    const hashOtp = await bcrypt.hash(otp, 10);
 
-    const isPasswordMatched = await user.comparePassword(password);
-    if (isPasswordMatched) {
-      const token = user.getJwtToken();
-      user.password = undefined;
-      res.cookie("Token", token, cookieOptions);
-      return res.status(200).json({
-        success: true,
-        token: token,
-        data: user
-      });
-    } else {
-      return next(
-        new CustomError("Invalid credentials - incorrect password", 400)
+    const isUserExist = await userModel.findOne({ email: email });
+
+    if (isUserExist) {
+      await userModel.findOneAndUpdate(
+        { email: email },
+        { hashOtp: hashOtp, hashOtpExpiry: Date.now() + 20 * 60 * 1000 }
       );
+    } else {
+      await userModel.create({
+        email,
+        hashOtp,
+        hashOtpExpiry: Date.now() + 20 * 60 * 1000 // 20min
+      });
     }
+
+    const subject = "Slack confirmation code";
+    const message = `Your confirmation code is below — enter it in your open browser window and we'll help you get signed in. <br> ${otp}`;
+    await sendEmail(email, subject, message);
+
+    // if email sent successfully send the success response
+    // sent success message
+    res.status(200).json({
+      success: true,
+      message: "OTP send successfully with"
+    });
   } catch (error) {
-    return next(error);
+    res.status(200).json({
+      success: true,
+      message: error
+    });
   }
 };
 
-const logout = async (req, res, next) => {};
+const confirmEmail = async (req, res, next) => {
+  const { otp, email } = req.body;
 
-const forgotPassword = async (req, res, next) => {};
+  try {
+    const user = await userModel.findOne("email", email);
+    if (!user) return new CustomError("user not found", 404);
 
+    const isValidOtp = await bcrypt.compare(otp, user.password);
 
-
-const resetPassword = async (req, res, next) => {};
+    if (!isValidOtp || user.hashOtpExpiry > new Date()) {
+      return new CustomError("invalid OTP or OTP expired", 404);
+    }
+    const token = userModel.getJwtToken();
+    res.cookie("Token", token, cookieOptions);
+    return res.status(200).json({
+      success: true,
+      token: token
+    });
+  } catch (error) {
+    res.status(404).json({
+      success: false
+    });
+  }
+};
 
 module.exports = {
   signUp,
-  signIn,
-  logout,
-  forgotPassword,
-  resetPassword
+  confirmEmail
 };

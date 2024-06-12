@@ -9,7 +9,6 @@ const errorHandler = (err, req, res, next) => {
   }
 
   //  invalid id
-
   if (err.name === "BSONTypeError") {
     message = `Invalid _id`;
     statusCode = 400;

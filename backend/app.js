@@ -4,9 +4,10 @@ const authRouter = require("./routes/authRouter.js");
 const errorHandler = require("./middleware/errorHandler.js");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 
 // swagger
-
 app.use(
   cors({
     methods: ["GET", "POST", "DELETE", "UPDATE", "PUT", "PATCH"],
@@ -20,7 +21,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTES
-
 app.use("/api/auth", authRouter);
 
 // ROUTES //

@@ -11,7 +11,7 @@ const jwtAuth = (req, res, next) => {
   try {
     const payLoad = JWT.verify(token, process.env.JWT_SECRET);
     if (!payLoad) return next(new CustomError("Invalid Token", 400));
-    req.user = { _id: payLoad._id, role: payLoad.role };
+    req.user = { _id: payLoad._id };
     return next();
   } catch (error) {
     return next(error);
